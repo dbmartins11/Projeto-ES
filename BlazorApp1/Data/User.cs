@@ -1,4 +1,4 @@
-﻿namespace BlazorApp1.Data
+﻿namespace SkaiMovies.Data
 {
     public class User
     {

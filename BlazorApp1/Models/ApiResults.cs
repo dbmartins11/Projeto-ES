@@ -1,7 +1,7 @@
-﻿using BlazorApp1.Data;
+﻿using SkaiMovies.Data;
 using System.Text.Json.Serialization;
 
-namespace BlazorApp1.Models
+namespace SkaiMovies.Models
 {
     public class ApiResults
     {

@@ -1,8 +1,8 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
-using BlazorApp1.Data;
+using SkaiMovies.Data;
 
-namespace BlazorApp1.Models
+namespace SkaiMovies.Models
 {
     public class MovieApi
     {

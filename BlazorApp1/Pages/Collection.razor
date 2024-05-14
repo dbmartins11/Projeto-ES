@@ -1,0 +1,26 @@
+﻿@page "/Collection"
+@using SkaiMovies.Data
+@using SkaiMovies.Models
+@using SkaiMovies.Components
+
+
+<CategoryComponent movies=@movies ></CategoryComponent>
+<style>
+	body {
+		background-color: #04001B;
+		color: white;
+	}
+</style>
+@code {
+
+	List<Movie> movies;
+	MovieApi api = new MovieApi();
+
+	protected override async Task OnInitializedAsync()
+	{
+		// Chamar a API para obter a lista de filmes
+		movies = await api.GetMovie("Fight CLub");
+		//movie = movies[0];
+	}
+
+}

@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 
-namespace BlazorApp1.Data
+namespace SkaiMovies.Data
 {
     public class Collections
     {

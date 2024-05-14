@@ -1,7 +1,7 @@
 ﻿using System.Text.Json.Serialization;
-using BlazorApp1.Models;
+using SkaiMovies.Models;
 
-namespace BlazorApp1.Data
+namespace SkaiMovies.Data
 {
     public class Movie
     {

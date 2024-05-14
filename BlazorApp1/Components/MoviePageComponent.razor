@@ -1,9 +1,9 @@
-﻿@using BlazorApp1.Models
-@using BlazorApp1.Data
+﻿@using SkaiMovies.Models
+@using SkaiMovies.Data
 
 <h3>MoviePageComponent</h3>
-<div class="row gx-0">
-	<div class="movie">
+<div class="row gx-0 flex">
+	<div class="moviePage">
 		<img class="poster" src="https://image.tmdb.org/t/p/w500/@movie.Poster" alt="Movie Poster" />
 		<button>+ Adicionar à coleção</button>
 	</div>
@@ -35,19 +35,20 @@
 </div>
 <style>
 	
-	.movie {
+	.moviePage {
 		height: 490px;
 		width: 260px;
+		margin:auto;
 		background-color: #292832;
 		border-radius: 15px;
 	}
 	
 
-		.movie h5 {
+		.moviePage h5 {
 			text-align: center;
 		}
 
-		.movie button {
+		.moviePage button {
 			background-color: transparent;
 			border: none;
 			color: white;
@@ -86,19 +87,6 @@
 
 
 @code {
-	private String currentCount;
-	MovieApi api = new MovieApi();
-	int n = 0;
-	List<Movie> movies;
-	Movie movie;
-
-
-
-	protected override async Task OnInitializedAsync()
-	{
-		// Chamar a API para obter a lista de filmes
-		movie = await api.GetMovieById(1645);
-		Console.WriteLine($"Categoria: {movie.Category[0].Name}");
-	}
-
+	[Parameter]
+	public Movie movie { get; set; }
 }

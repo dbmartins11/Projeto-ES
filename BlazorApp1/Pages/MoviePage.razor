@@ -1,0 +1,26 @@
+﻿@page "/MoviePage"
+
+@using SkaiMovies.Models
+@using SkaiMovies.Data
+@using SkaiMovies.Components
+
+<MoviePageComponent movie=@movie> </MoviePageComponent>
+<style>
+	body {
+		background-color: #04001B;
+		color: white;
+		justify-items: center;
+		align-items:center;
+	}
+</style>
+@code {
+	MovieApi api = new MovieApi();
+	Movie movie;
+
+	protected override async Task OnInitializedAsync()
+	{
+		// Chamar a API para obter a lista de filmes
+		movie = await api.GetMovieById(1645);
+		Console.WriteLine($"Categoria: {movie.Category[0].Name}");
+	}
+}

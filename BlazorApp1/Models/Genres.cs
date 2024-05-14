@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace BlazorApp1.Models
+namespace SkaiMovies.Models
 {
 	public class Genres
 	{

@@ -1,5 +1,5 @@
-﻿@using BlazorApp1.Models
-@using BlazorApp1.Data
+﻿@using SkaiMovies.Models
+@using SkaiMovies.Data
 
 <link rel="stylesheet" href="css/app.css" />
 
@@ -51,33 +51,8 @@
 
 </style>
 @code {
-	private String currentCount;
-	MovieApi api = new MovieApi();
-	int n = 0;
-	List<Movie> movies;
-	//Movie movie;
-
-
-
-	protected override async Task OnInitializedAsync()
-	{
-		// Chamar a API para obter a lista de filmes
-		movies = await api.GetMovie("Fight CLub");
-		//movie = movies[0];
-	}
-
-	private async void IncrementCount()
-	{
-		movies = await api.GetMovie("Fight Club");
-		if (movies != null && movies.Count > 0)
-		{
-			currentCount = movies[n].Title;
-			Console.WriteLine($"{movies[n].Title}");
-			n++;
-		}
-	}
-
-
+	[Parameter]
+	public List<Movie> movies { get; set; }
 }
 
 
