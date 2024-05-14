@@ -1,0 +1,104 @@
+﻿@using BlazorApp1.Models
+@using BlazorApp1.Data
+
+<h3>MoviePageComponent</h3>
+<div class="row gx-0">
+	<div class="movie">
+		<img class="poster" src="https://image.tmdb.org/t/p/w500/@movie.Poster" alt="Movie Poster" />
+		<button>+ Adicionar à coleção</button>
+	</div>
+	<div class="col-10 info">
+		<h1><b>@movie.Title</b> <span style="font-size:20px">(@movie.Date)</span></h1>
+
+		<div class="flex">
+			<img class="star " src="star-removebg-preview.png" alt="8.8" />
+			<p>@movie.Voting</p>
+			<br /><br />
+		</div>
+		
+		<p>@movie.Synopsis</p>
+		<div>
+			<p><b>Género: </b>
+				@foreach (var category in movie.Category)
+				{
+					<span>@category.Name</span>
+					@if (category != movie.Category.Last()) 
+					{
+						<span>, </span>
+					}
+				}
+			</p>
+			<p><b>Duração: </b>@movie.Runtime min</p>
+			<p><b>País: </b>@movie.Country[0]</p>
+		</div>
+	</div>
+</div>
+<style>
+	
+	.movie {
+		height: 490px;
+		width: 260px;
+		background-color: #292832;
+		border-radius: 15px;
+	}
+	
+
+		.movie h5 {
+			text-align: center;
+		}
+
+		.movie button {
+			background-color: transparent;
+			border: none;
+			color: white;
+			text-align: center;
+			margin: auto;
+			display: block;
+		}
+
+	.flex {
+		display: flex;
+	}
+
+	.poster {
+		height: 380px;
+		width: 260px;
+	}
+
+	.star {
+		height: 20px;
+		width: 20px;
+		margin-end: 5px;
+	}
+	.info {
+		padding: 30px;
+		width: 700px;
+		height: 490px;
+		background-color: #070033;
+		margin: auto;
+		display: block;
+	}
+
+		.info > div {
+			width: 300px;
+		}
+</style>
+
+
+@code {
+	private String currentCount;
+	MovieApi api = new MovieApi();
+	int n = 0;
+	List<Movie> movies;
+	Movie movie;
+
+
+
+	protected override async Task OnInitializedAsync()
+	{
+		// Chamar a API para obter a lista de filmes
+		movie = await api.GetMovieById(1645);
+		Console.WriteLine($"Categoria: {movie.Category[0].Name}");
+	}
+
+}

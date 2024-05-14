@@ -1,0 +1,62 @@
+﻿@page "/counter"
+@using BlazorApp1.Data
+@using BlazorApp1.Models
+@using BlazorApp1.Components
+
+<link rel="stylesheet" href="css/app.css" />
+<!--<PageTitle>Counter</PageTitle>
+
+
+
+<p role="status">Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+@if (movies != null)
+{
+    <img src="https://image.tmdb.org/t/p/w500/@movies[n].poster_path" alt="Movie Poster" />
+}
+<div class="title">
+    <h3>Coleção</h3>
+</div>
+-->
+
+
+<!--
+
+<MovieComponent> </MovieComponent>
+
+<CategoryComponent></CategoryComponent>
+
+<MoviePageComponent> </MoviePageComponent>
+-->
+<MovieComponent> </MovieComponent>
+
+
+<style>
+    body {
+        background-color: #04001B;
+        color: white;
+    }
+    .title{
+        padding:10px;
+        padding-bottom: 50px;
+    }
+</style>
+
+@code {
+    private String currentCount;
+    MovieApi api = new MovieApi();
+    int n = 0;
+    List<Movie> movies;
+
+    private async void IncrementCount()
+    {
+        movies = await api.GetMovie("Fight Club");
+        if (movies != null && movies.Count > 0){
+            currentCount=movies[n].Title;
+            Console.WriteLine($"{movies[n].Title}");
+            n++;
+        }
+    }
+
+}

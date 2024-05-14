@@ -1,0 +1,83 @@
+﻿@using BlazorApp1.Models
+@using BlazorApp1.Data
+
+<link rel="stylesheet" href="css/app.css" />
+
+
+@foreach (var movie in movies)
+{
+	<div class="row filmCategory">
+		<section class="col-2 img">
+			@if (movie != null)
+			{
+				<img src="https://image.tmdb.org/t/p/w500/@movie.Poster" alt="Movie Poster" />
+			}
+		</section>
+		<section class="col-10">
+			<h3>@movie.Title</h3>
+			<p>@movie.Synopsis</p>
+		</section>
+
+	</div>
+}
+
+<style>
+	.filmCategory {
+		padding: 10px;
+		border-top-style: solid;
+		border-top-color: white;
+		height: 150px;
+		height: auto;
+		width: 90%;
+		color: white;
+		margin: auto;
+	}
+
+	.img {
+		height: 125px;
+	 	display: flex;
+	 	width: 15%;
+		 margin: auto;
+	}
+
+		.img img {
+			height: 125px;
+		}
+
+	.info{
+		display:flex;
+		width: 85%;
+	}
+
+</style>
+@code {
+	private String currentCount;
+	MovieApi api = new MovieApi();
+	int n = 0;
+	List<Movie> movies;
+	//Movie movie;
+
+
+
+	protected override async Task OnInitializedAsync()
+	{
+		// Chamar a API para obter a lista de filmes
+		movies = await api.GetMovie("Fight CLub");
+		//movie = movies[0];
+	}
+
+	private async void IncrementCount()
+	{
+		movies = await api.GetMovie("Fight Club");
+		if (movies != null && movies.Count > 0)
+		{
+			currentCount = movies[n].Title;
+			Console.WriteLine($"{movies[n].Title}");
+			n++;
+		}
+	}
+
+
+}
+
+
