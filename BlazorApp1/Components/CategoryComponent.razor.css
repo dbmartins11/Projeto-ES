@@ -1,0 +1,26 @@
+﻿.filmCategory {
+    padding: 10px;
+    border-top-style: solid;
+    border-top-color: white;
+    height: 150px;
+    height: auto;
+    width: 90%;
+    color: white;
+    margin: auto;
+}
+
+.img {
+    height: 125px;
+    display: flex;
+    width: 15%;
+    margin: auto;
+}
+
+    .img img {
+        height: 125px;
+    }
+
+.info {
+    display: flex;
+    width: 85%;
+}

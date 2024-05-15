@@ -1,0 +1,34 @@
+﻿@page "/MainPage"
+@using SkaiMovies.Data
+@using SkaiMovies.Models
+@using SkaiMovies.Components
+
+<h3>Filmes do momento:</h3><br />
+
+@if (movies is not null)
+{
+	<div class="row mt-3">
+		@foreach (var movie in movies)
+		{
+			<div class="col-md-3 mb-2">
+				
+					<MovieComponent movie=@movie></MovieComponent>
+				
+			</div>
+		}
+	</div>
+
+}
+
+
+@code {
+	MovieApi api = new MovieApi();
+	int n = 0;
+	List<Movie> movies;
+	int i = 0;
+
+	protected override async Task OnInitializedAsync()
+	{
+		movies = await api.GetPopular();
+	}
+}

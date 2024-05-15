@@ -11,19 +11,13 @@
 else{
 <p>Loading...</p>
 }
-<style>
-	body {
-		background-color: #04001B;
-		color: white;
-	}
-</style>
+
 @code {
 	MovieApi api = new MovieApi();
 	Movie movie;
 
 	protected override async Task OnInitializedAsync()
 	{
-		// Chamar a API para obter a lista de filmes
 		movie = await api.GetMovieById(1645);
 		Console.WriteLine($"Categoria: {movie.Category[0].Name}");
 	}

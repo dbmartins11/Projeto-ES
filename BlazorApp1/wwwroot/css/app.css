@@ -1,5 +1,10 @@
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+ 
+}
+body {
+    background-color: #04001B;
+    color: white;
 }
 
 h1:focus {
@@ -102,41 +107,3 @@ code {
     color: #c02d76;
 }
 
-/*-------------*/
-.movie {
-    height: 320px;
-    width: 142px;
-    background-color: #292832;
-    border-radius: 15px;
-    font-size: 13px;
-}
-
-    .movie div {
-        display: flex;
-    }
-
-    .movie h5 {
-        text-align: center;
-    }
-
-    .movie button {
-        background-color: transparent;
-        border: none;
-        color: white;
-        text-align: center;
-        margin: auto;
-        display: block;
-    }
-
-.poster {
-    height: 210px;
-    width: 142px;
-    margin-bottom: 5px;
-}
-
-.star {
-    height: 20px;
-    width: 20px;
-    margin-end: 5px;
-
-}
