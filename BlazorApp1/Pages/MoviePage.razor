@@ -4,9 +4,12 @@
 @using SkaiMovies.Data
 @using SkaiMovies.Components
 
+
+<NavBar></NavBar>
 @if (movie is not null)
 {
 	<MoviePageComponent movie=@movie> </MoviePageComponent>
+
 }
 else{
 <p>Loading...</p>
@@ -15,10 +18,13 @@ else{
 @code {
 	MovieApi api = new MovieApi();
 	Movie movie;
+	
 
 	protected override async Task OnInitializedAsync()
 	{
 		movie = await api.GetMovieById(1645);
 		Console.WriteLine($"Categoria: {movie.Category[0].Name}");
 	}
+
+	
 }

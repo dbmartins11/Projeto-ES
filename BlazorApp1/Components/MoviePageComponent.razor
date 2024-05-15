@@ -2,29 +2,43 @@
 @using SkaiMovies.Data
 
 
-
-<h3>MoviePageComponent</h3>
-<div class="row gx-0 flex">
+<div class="row gx-0 content">
 	<div class="moviePage">
-		<img class="poster" src="https://image.tmdb.org/t/p/w500/@movie.Poster" alt="Movie Poster" />
-		<button>+ Adicionar à coleção</button>
+		<img class="poster" src="https://image.tmdb.org/t/p/w500/@movie.Poster" alt="Movie Poster" /><br /><br />
+		<button @onclick="showPopup">
+			+ Adicionar à coleção
+			<img src="collection.png" alt="Alternate Text" />
+		</button>
+		
 	</div>
 	<div class="col-10 info">
 		<h1><b>@movie.Title</b> <span style="font-size:20px">(@movie.Date)</span></h1>
+		<ModalComponent IsVisible=popup IsVisibleChanged=OnModalVisibilityChanged Title="Coleções">
+			<form action="/" method="post">
+				@foreach (var collection in collections)
+				{
+					<input type="checkbox" id=@collection name="collection" value=@collection />
+					<label for=@collection>@collection</label>
 
+					<br />
+				}
+			
+			</form>
+		</ModalComponent>
 		<div class="flex">
 			<img class="star " src="star-removebg-preview.png" alt="8.8" />
 			<p>@movie.Voting</p>
 			<br /><br />
 		</div>
-		
+
 		<p>@movie.Synopsis</p>
 		<div>
-			<p><b>Género: </b>
+			<p>
+				<b>Género: </b>
 				@foreach (var category in movie.Category)
 				{
 					<span>@category.Name</span>
-					@if (category != movie.Category.Last()) 
+					@if (category != movie.Category.Last())
 					{
 						<span>, </span>
 					}
@@ -34,10 +48,26 @@
 			<p><b>País: </b>@movie.Country[0]</p>
 		</div>
 	</div>
+	
+
+
 </div>
  
 
 @code {
 	[Parameter]
 	public Movie movie { get; set; }
+
+	String[] collections = ["ola", "teste"];
+	Boolean popup = false;
+
+	private void showPopup()
+	{
+		popup = true;
+	}
+
+	private void OnModalVisibilityChanged(bool isVisible)
+	{
+		popup = isVisible;
+	}
 }

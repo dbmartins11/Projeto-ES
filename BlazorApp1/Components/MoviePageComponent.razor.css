@@ -1,6 +1,10 @@
 ﻿
+.content {
+    padding:50px;
+}
+
 .moviePage {
-    height: 490px;
+    height: 450px;
     width: 260px;
     margin: auto;
     background-color: #292832;
@@ -21,6 +25,10 @@
         display: block;
     }
 
+button img{
+    height:20px;
+}
+
 .flex {
     display: flex;
 }
@@ -39,7 +47,7 @@
 .info {
     padding: 30px;
     width: 700px;
-    height: 490px;
+    height: 450px;
     background-color: #070033;
     margin: auto;
     display: block;

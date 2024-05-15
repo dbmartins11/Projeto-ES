@@ -1,0 +1,78 @@
+﻿@using SkaiMovies.Data
+@using SkaiMovies.Models
+
+<div>
+@* 	@if (collections is not null)
+	{
+		@foreach (var collection in collections)
+		{
+			<h3>@collection.Name</h3>
+			<div class="row collection">
+				@if (collection.Films.Length <= 10)
+				{
+					@foreach (var movie in collection.Films)
+					{
+						<section class="col">
+							<img class="moviePoster" src="https://image.tmdb.org/t/p/w500/@movie.Poster" alt="Alternate Text" />
+						</section>
+					}
+				}
+				else{
+					@for(int i = 0; i<9; i++){
+						<section class="col">
+							<img class="moviePoster" src="https://image.tmdb.org/t/p/w500/@collection.Films[i].Poster" alt="Alternate Text" />
+						</section>
+					}
+				}
+			</div>
+		}
+	} *@
+	<div class="row collection">
+		
+			@for(int i = 0; i<9; i++)
+			{
+				
+				<section class="col img">
+					<img class="moviePoster" src="https://image.tmdb.org/t/p/w500/@movie[i].Poster" alt="Alternate Text" />
+				</section>
+				
+			}
+		
+	</div>
+</div>
+
+<style>
+	.collection {
+		border-style: solid;
+		border-color: white;
+		border-radius: 30px;
+		height: 150px;
+		width: 80%;
+		margin:auto;
+	}
+
+	.img {
+		height: 125px;
+		display: flex;
+		width: 15%;
+		margin: auto;
+	}
+
+		.img img {
+			height: 125px;
+		}
+</style>
+
+@code {
+	// [Parameter]
+	// public List<Collections> collections { get; set; }
+
+	MovieApi api = new MovieApi();
+	List<Movie> movie;
+	int count = 0;
+
+	protected override async Task OnInitializedAsync()
+	{
+		movie = await api.GetMovie("fight club");
+	}
+}
