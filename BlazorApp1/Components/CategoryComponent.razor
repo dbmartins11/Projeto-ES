@@ -4,8 +4,7 @@
 <link rel="stylesheet" href="css/app.css" />
 
 
-@foreach (var movie in movies)
-{
+
 	<div class="row filmCategory">
 		<section class="col-2 img">
 			@if (movie != null)
@@ -13,17 +12,18 @@
 				<img src="https://image.tmdb.org/t/p/w500/@movie.Poster" alt="Movie Poster" />
 			}
 		</section>
-		<section class="col-10">
+		<section class="col-10 linl">
 			<h3>@movie.Title</h3>
 			<p>@movie.Synopsis</p>
 		</section>
 
 	</div>
-}
+
+
 
 @code {
 	[Parameter]
-	public List<Movie> movies { get; set; }
+	public Movie movie { get; set; }
 }
 
 

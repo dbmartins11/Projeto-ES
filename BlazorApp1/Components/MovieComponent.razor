@@ -1,16 +1,18 @@
 ﻿@using SkaiMovies.Models
 @using SkaiMovies.Data
 
+
 <div class="movie">
+
 	<img class="poster" src="https://image.tmdb.org/t/p/w500/@movie.Poster" alt="Movie Poster" />
 	<h6>@movie.Title</h6>
 	 
-	<div class="row gx-0">
+	<div class="row gx-0 ">
 		<div class="flex col">
 			<img class="star " src="star-removebg-preview.png" alt="8.8" />
-			<p>@movie.Voting</p>
+			<p >@movie.Voting</p>
 		</div>
-		<div class="like col">
+		<div class="like col ">
 			<button @onclick="changeFavourite">
 				@if(!favourite){
 					<img src="fav.png" alt="Like" />
@@ -22,7 +24,7 @@
 			</button>
 		</div>
 	</div>
-	<button>+ Adicionar à coleção</button>
+	<button class="text-white">+ Adicionar à coleção</button>
 </div>
 
 <style>
@@ -35,6 +37,7 @@
 	Boolean favourite = false;
 	private async void changeFavourite()
 	{
+		
 		Console.WriteLine(favourite);
 		favourite = !favourite;
 	}

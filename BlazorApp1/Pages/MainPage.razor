@@ -12,9 +12,12 @@
 	<div class="row mt-3">
 		@foreach (var movie in movies)
 		{
+			var url = $"/MoviePage/{movie.Id}";
 			<div class="col-md-3 mb-2">
-				
-					<MovieComponent movie=@movie></MovieComponent>
+				<NavLink href="@url" class="text-white" style="text-decoration:none">
+					<MovieComponent movie="@movie"></MovieComponent>
+				</NavLink>
+
 				
 			</div>
 		}

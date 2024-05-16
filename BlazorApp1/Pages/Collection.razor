@@ -6,7 +6,14 @@
 <NavBar></NavBar>
 @if (movies is not null)
 {
-		<CategoryComponent movies=@movies ></CategoryComponent>
+	@foreach (var movie in movies)
+	{
+		var url = $"/MoviePage/{@movie.Id}";
+		<NavLink href="@url" class="text-white" style="text-decoration:none">
+			<CategoryComponent movie=@movie></CategoryComponent>
+		</NavLink>
+		
+	}
 }
 else
 {

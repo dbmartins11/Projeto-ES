@@ -1,8 +1,9 @@
-﻿@page "/MoviePage"
+﻿@page "/MoviePage/{id:int}"
 
 @using SkaiMovies.Models
 @using SkaiMovies.Data
 @using SkaiMovies.Components
+@inject NavigationManager NavigationManager
 
 
 <NavBar></NavBar>
@@ -16,13 +17,16 @@ else{
 }
 
 @code {
+	[Parameter]
+	public int id { get; set; }
+
 	MovieApi api = new MovieApi();
 	Movie movie;
 	
 
 	protected override async Task OnInitializedAsync()
 	{
-		movie = await api.GetMovieById(1645);
+		movie = await api.GetMovieById(id);
 		Console.WriteLine($"Categoria: {movie.Category[0].Name}");
 	}
 

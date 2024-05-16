@@ -7,6 +7,7 @@
     width: 90%;
     color: white;
     margin: auto;
+    text-decoration:none;
 }
 
 .img {
@@ -24,3 +25,4 @@
     display: flex;
     width: 85%;
 }
+
